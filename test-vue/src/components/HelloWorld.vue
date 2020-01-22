@@ -2,6 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
+    <button @click="signOut">SignOut</button>
     <button @click="apiPublic">public</button>
     <button @click="apiPrivate">private</button>
   </div>
@@ -9,6 +10,7 @@
 
 <script>
 import axios from 'axios'
+import firebase from 'firebase'
 export default {
   name: 'HelloWorld',
   data () {
@@ -17,6 +19,12 @@ export default {
     }
   },
   methods: {
+    signOut: function () {
+      firebase.auth().signOut().then(() => {
+        localStorage.removeItem('jwt')
+        this.$router.push('/signin')
+      })
+    },
     apiPublic: async function () {
       let res = await axios.get('http://localhost:8000/public')
       this.msg = res.data
