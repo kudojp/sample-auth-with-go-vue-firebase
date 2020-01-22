@@ -3,10 +3,25 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import firebase from 'firebase'
 
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: 'AIzaSyAsWNN5x1R22anoLt1tfHdm9HEMpoZzbeI',
+  authDomain: 'sample-authentication-5cdce.firebaseapp.com',
+  databaseURL: 'https://sample-authentication-5cdce.firebaseio.com',
+  projectId: 'sample-authentication-5cdce',
+  storageBucket: 'sample-authentication-5cdce.appspot.com',
+  messagingSenderId: '230742703063',
+  appId: '1:230742703063:web:64d30c7f9fd48cfe08e992',
+  measurementId: 'G-MK5L8C9C3J'
+}
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig)
+
+// eslint-disable-next-line
 new Vue({
   el: '#app',
   router,
