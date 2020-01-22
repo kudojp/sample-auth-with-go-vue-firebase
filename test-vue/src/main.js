@@ -6,6 +6,7 @@ import router from './router'
 import firebase from 'firebase'
 
 Vue.config.productionTip = false
+let app
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -21,10 +22,13 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig)
 
-// eslint-disable-next-line
-new Vue({
-  el: '#app',
-  router,
-  components: { App },
-  template: '<App/>'
+// Auth オブジェクトが中間状態（初期化など）ではないことを確認する
+firebase.auth().onAuthStateChanged(user => {
+  // eslint-disable-next-line
+  new Vue({
+    el: '#app',
+    router,
+    components: { App },
+    template: '<App/>'
+  })
 })
