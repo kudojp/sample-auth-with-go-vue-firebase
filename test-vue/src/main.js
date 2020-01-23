@@ -21,7 +21,7 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig)
 
-// Auth オブジェクトが中間状態（初期化など）ではないことを確認する
+// Auth オブジェクトが中間状態（初期化中など）ではないことを確認する
 firebase.auth().onAuthStateChanged(user => {
   // eslint-disable-next-line
   new Vue({
