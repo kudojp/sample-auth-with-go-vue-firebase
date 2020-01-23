@@ -29,8 +29,11 @@ export default {
       let res = await axios.get('http://localhost:8000/public')
       this.msg = res.data
     },
+    // localStorage内の、Firebaseから発行されたJWTをヘッダーにつけて送信
     apiPrivate: async function () {
-      let res = await axios.get('http://localhost:8000/private')
+      let res = await axios.get('http://localhost:8000/private', {
+        headers: {'Authorization': `Bearer ${localStorage.getItem('jwt')}`}
+      })
       this.msg = res.data
     }
   }

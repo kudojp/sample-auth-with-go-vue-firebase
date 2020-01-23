@@ -24,8 +24,12 @@ export default {
   methods: {
     signIn: function () {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(res => {
-        localStorage.setItem('jwt', res.user.qa)
-        this.$router.push('/')
+        // getIdTokenは戻り値がPromise<string> (Promise は非同期処理の最終的な完了もしくは失敗を表すオブジェクト)
+        // thenでつなぐ
+        res.user.getIdToken().then(token => {
+          localStorage.setItem('jwt', token)
+          this.$router.push('/')
+        })
       }, err => {
         alert(err.message)
       })

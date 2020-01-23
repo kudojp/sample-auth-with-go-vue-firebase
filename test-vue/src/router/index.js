@@ -33,9 +33,10 @@ let router = new Router({
 })
 
 // beforeEachを設定
+// これによりフロントエンドで各ページを開くことの可否を調べられる
 router.beforeEach((to, from, next) => {
   let currentUser = firebase.auth().currentUser
-  console.log(currentUser)
+  console.log(`current user: ${currentUser}`)
   let requiresAuth = to.matched.some(record => record.meta.requiresAuth)
   if (requiresAuth && !currentUser) next('signin')
   else if (!requiresAuth && currentUser) next()
