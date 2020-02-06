@@ -1,6 +1,6 @@
 # 「Vue.js + Go 言語 + Firebase 」での認証のサンプルアプリ
 
-このレポジトリは[vue-golang-fireauth](https://github.com/po3rin/vue-golang-fireauth)を純粋に写経したものである。READMEは復讐として自分でまとめた。デプロイはしていない。
+このレポジトリは[vue-golang-fireauth](https://github.com/po3rin/vue-golang-fireauth)を純粋に写経したものである。このREADMEは整理として自分でまとめた。デプロイはしていない。
 
 ## ローカル環境
 go 1.13.6 / vue 3.5.0 / node v13.1.0
